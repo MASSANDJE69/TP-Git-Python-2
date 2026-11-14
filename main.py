@@ -1,48 +1,42 @@
 
-livres = []
+taches = []
 
 while True:
-    print("\n--- MENU ---")
-    print("1. Ajouter un livre")
-    print("2. Afficher les livres")
-    print("3. Rechercher un livre")
+    print("=== GESTION DES TACHES ===")
+    print("1. Ajouter une tache")
+    print("2. Afficher les taches")
+    print("3. Rechercher une tache")
     print("0. Quitter")
-    
-    choix = input("Ton choix : ")
+    choix = input("Votre choix : ")
 
     if choix == "1":
-        titre = input("Titre du livre : ")
-        if titre.strip() == "":
-            print("Erreur : le titre ne peut pas être vide !")
+        titre = input("Titre de la tache : ")
+        if titre == "":
+            print("Le titre ne peut pas etre vide.")
         else:
-            livres.append(titre)
-            print("Livre ajouté !")
+            taches.append(titre)
+            print("Tache ajoutee avec succes.")
 
     elif choix == "2":
-        if len(livres) == 0:
-            print("Aucun livre pour le moment.")
+        if len(taches) == 0:
+            print("Aucune tache pour le moment.")
         else:
-            print("\nListe des livres :")
-            for i in range(len(livres)):
-                print(f"{i+1}. {livres[i]}")
+            for i in range(len(taches)):
+                print(f"{i+1}. {taches[i]}")
 
     elif choix == "3":
-        mot = input("Mot-clé à rechercher : ")
-        trouves = []
-        for livre in livres:
-            if mot.lower() in livre.lower():
-                trouves.append(livre)
-        
-        if len(trouves) == 0:
-            print("Aucun livre trouvé.")
-        else:
-            print("Résultats :")
-            for livre in trouves:
-                print(f"- {livre}")
+        mot = input("Mot-cle : ")
+        trouve = False
+        for t in taches:
+            if mot in t:
+                print(t)
+                trouve = True
+        if not trouve:
+            print("Aucune tache trouvee.")
 
     elif choix == "0":
         print("Au revoir !")
         break
 
     else:
-        print("Choix invalide, réessaie.")
+        print("Choix invalide.")
